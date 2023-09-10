@@ -2,6 +2,12 @@ import { createApp } from "vue";
 import App from './App.vue'
 
 import './styles/index.css'
+
+// 使用 pinia
+import { createPinia } from "pinia";
+const pinia = createPinia()
+
+
 // 使用 axios
 // import axios from "axios";
 
@@ -23,4 +29,4 @@ import './styles/index.css'
 // }
 // getList()
 
-createApp(App).mount('#app')
+createApp(App).use(pinia).mount('#app')

@@ -1,9 +1,17 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+// 调接口
+import useStore from '../store/index'
+const {channel} = useStore()
+console.log(channel.getChannel());
+
+</script>
 
 <template>
   <ul class="catagtory">
-    <li class="select">开发者资讯</li>
-    <li>ios</li>
+    <!-- 数据渲染 解决高亮问题 -->
+    <!-- :class="item.id === channel.active?{select:true}:{select:false}" 三元表达式判断 -->
+    <li :class="{select:item.id === channel.active}" @click="channel.clickEven(item.id)" v-for="item in channel.channelList" :key="item.id">{{item.name}}</li>
+    <!-- <li>ios</li>
     <li>c++</li>
     <li>android</li>
     <li>css</li>
@@ -28,7 +36,7 @@
     <li>数码产品</li>
     <li>html</li>
     <li>软件测试</li>
-    <li>测试开发</li>
+    <li>测试开发</li> -->
   </ul>
 </template>
 
